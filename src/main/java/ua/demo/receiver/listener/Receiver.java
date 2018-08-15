@@ -12,7 +12,8 @@ public class Receiver {
     private AtomicInteger count = new AtomicInteger(0);
 
     @RabbitListener(queues = "report_queue")
-    public void worker(String message) {
+    public void worker(String message) throws InterruptedException {
         log.info("Received on worker : " + message + ", count: " + count.incrementAndGet());
+        Thread.sleep(2000L);
     }
 }
