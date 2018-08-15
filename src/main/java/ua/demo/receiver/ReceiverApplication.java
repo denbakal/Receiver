@@ -19,8 +19,9 @@ public class ReceiverApplication implements RabbitListenerConfigurer {
 	public SimpleRabbitListenerContainerFactory myRabbitListenerContainerFactory() {
 		SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
 		factory.setConnectionFactory(connectionFactory());
-		factory.setConcurrentConsumers(5);
-		factory.setMaxConcurrentConsumers(10);
+		factory.setAcknowledgeMode(AcknowledgeMode.MANUAL);
+//		factory.setConcurrentConsumers(5);
+//		factory.setMaxConcurrentConsumers(10);
 		return factory;
 	}
 
