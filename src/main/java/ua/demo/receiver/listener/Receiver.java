@@ -19,6 +19,6 @@ public class Receiver {
     public void worker(String message, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws InterruptedException, IOException {
         log.info("Received on worker : " + message + ", count: " + count.incrementAndGet());
         Thread.sleep(2000L);
-        channel.basicReject(tag, true);
+        channel.basicReject(tag, false);
     }
 }
